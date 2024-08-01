@@ -34,7 +34,22 @@ OceanBase::
 
 GenericJDBCConnection::
 
-        Set an environment variable `JDBC_DRIVER_PATH`
+        Set an environment variable `CLASSPATH`
+
+        // your dialect.py
+        class SQLBaseJDBCDialect(GenericJDBCDialect):
+            jdbc_db_name = "sqlbase"
+            jdbc_driver_name = "jdbc.gupta.sqlbase.SqlbaseDriver"
+
+        // __init__.py
+        rom sqlalchemy.dialects import registry
+
+        registry.register(
+            "jdbcapi.sqlbase", "dialect", "SQLBaseJDBCDialect"
+        )
+
+        // Your database.py
+        create_engine("jdbcapi+sqlbase://localhost:2881/TEST")
 
 Supported databases
 -------------------
@@ -63,6 +78,9 @@ All contributors will be acknowledged. Thanks!
 
 Changelog
 ------------
+- 1.4.0 - 2024-08-1
+  - add genericjdbc and sample, use poetry, flake and nix
+
 - 1.3.0 - 2023-08-23
   - add oceanbase's Oracle mode support.
 

@@ -1,6 +1,25 @@
+[tool.poetry]
+name = "sqlalchemy_jdbcapi"
+version = "1.4.0"
+description = "Python SQLAlchemy Dialect for JDBCAPI."
+authors = [
+    "Danesh Patel <danesh_patel@outlook.com>",
+    "Pavel Henrykhsen <pavel.henrykhsen@outlook.com>",
+]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sqlalchemy = "^2.0.31"
+jaydebeapi = "^1.2.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length = 79
-target-version = ['py37']
+target-version = ['py312']
 exclude = '''
     /(
         \.git
@@ -22,3 +41,4 @@ exclude = '''
       | setup.cfg:
       | project.toml
     )/
+'''
